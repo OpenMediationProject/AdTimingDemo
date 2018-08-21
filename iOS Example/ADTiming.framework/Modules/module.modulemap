@@ -1,0 +1,11 @@
+framework module ADTiming {
+  umbrella header "ADTiming.h"
+
+  export *
+  module * { export * }
+}
+
+module ADTiming.Swift {
+    header "ADTiming-Swift.h"
+    requires objc
+}
