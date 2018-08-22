@@ -1,0 +1,16 @@
+PODS:
+  - ADTiming (3.0.3)
+
+DEPENDENCIES:
+  - ADTiming
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - ADTiming
+
+SPEC CHECKSUMS:
+  ADTiming: e76e85a4ca208902469b88256059d0accbdf4ff6
+
+PODFILE CHECKSUM: bbc2537e9dd99961fdf3362d5f495d24ab3dafad
+
+COCOAPODS: 1.5.2

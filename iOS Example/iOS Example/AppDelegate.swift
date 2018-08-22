@@ -9,7 +9,6 @@ import UIKit
 import ADTiming
 import AppLovinSDK
 import UnityAds
-//import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
