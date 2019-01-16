@@ -6,57 +6,54 @@
 //
 
 import UIKit
-import ADTiming
 
 class VideoViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ATVideo.shared.delegate = self
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     @IBAction func load(_ sender: Any) {
-        ATVideo.shared.load("113")
+        ADTVideoAd.sharedInstance().delegate = self
+        ADTVideoAd.sharedInstance().load(withPlacmentID: "113")
     }
     
     @IBAction func show(_ sender: Any) {
-        ATVideo.shared.present(self, placementId: "113")
+        ADTVideoAd.sharedInstance().isReady("113")
+        ADTVideoAd.sharedInstance().show("113")
     }
     
 }
 
-extension VideoViewController: ATVideoDelegate {
-    func atVideoDidLoad(_ video: ATVideo, placementId: String) {
+extension VideoViewController: ADTVideoAdDelegate {
+    func adtVideoAdDidload(_ placementID: String) {
         print("videoAdDidLoad")
     }
     
-    func atVideo(_ video: ATVideo, placementId: String, failWithShow error: NSError) {
+    func adtVideoAdDidFail(toLoad error: Error) {
         print("videoAdShowFail")
     }
     
-    func atVideoStartPlay(_ video: ATVideo, placementId: String) {
+    func adtVideoAdDidStart() {
         print("VideoAdStartPlay")
     }
     
-    func atVideoFinishPlay(_ video: ATVideo, placementId: String, finishState: ATVideoFinishState) {
-        if finishState == .skipped {
-            print("VideoAdSkipped")
-        } else if finishState == .completed {
-            print("VideoAdCompleted")
-        }
-    }
-    
-    func atVideoDidClick(_ video: ATVideo, placementId: String) {
+    func adtVideoAdDidClick() {
         print("videoAdDidClick")
     }
     
-    func atVideoDidClose(_ video: ATVideo, placementId: String) {
-        print("videoAdDidClose")
+    func adtVideoAdDidFinish(_ state: ADTVideoAdFinishState) {
+        if state == .skipped {
+            print("VideoAdSkipped")
+        } else if state == .completed {
+            print("VideoAdCompleted")
+        }
     }
 }

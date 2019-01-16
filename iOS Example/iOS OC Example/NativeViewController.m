@@ -6,19 +6,18 @@
 //
 
 #import "NativeViewController.h"
-#import <ADTiming/ADTiming.h>
 #import "UIImageView+WebCache.h"
 
-@interface NativeViewController () <ATNativeLoaderDelegate> {
-    ATNativeLoader *_nativeLoader;
-    ATNativeView* _atNativeView;
-    UIView *_adView;
-    UIImageView *_mainImageView;
-    UIImageView *_iconImageView;
-    UILabel *_title;
-    UILabel *_description;
-}
-@property (nonatomic , strong)ATNativeItem *nativeItem;
+@import AdTiming;
+
+@interface NativeViewController () <ADTNativeDelegate>
+@property (nonatomic, strong) NSString *loadId;
+@property (nonatomic, strong) ADTNative *native;
+@property (nonatomic, strong) ADTNativeAd *nativeAd;
+@property (nonatomic, strong) ADTNativeView *nativeView;
+@property (nonatomic, strong) UIImageView *iconView;
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *bodyLabel;
 
 @end
 
@@ -27,47 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    ATNativeLoader *loader = [[ATNativeLoader alloc] init];
-    loader.placementId = @"109";
-    loader.delegate = self;
-    loader.adType = ATNativeTypeNormal;
-    loader.rootViewController = self;
-    _nativeLoader = loader;
-}
-
-- (void)loadData{
-    [_mainImageView sd_setImageWithURL:[NSURL URLWithString:_nativeItem.imageUrl]];
-    [_iconImageView sd_setImageWithURL:[NSURL URLWithString:_nativeItem.iconUrl]];
-    
-    _title.text = _nativeItem.title;
-    _description.text = _nativeItem.body;;
-}
-
-- (void)setAdView{
-    if (!_adView) {
-        _adView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 300)];
-        _adView.clipsToBounds = YES;
-    }
-    
-    if (!_mainImageView) {
-        _mainImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 300)];
-        [_adView addSubview:_mainImageView];
-    }
-    
-    if (!_iconImageView) {
-        _iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
-        [_adView addSubview:_iconImageView];
-    }
-    
-    if(!_title){
-        _title = [[UILabel alloc] initWithFrame:CGRectMake(0, 270, self.view.frame.size.width, 15)];
-        [_adView addSubview:_title];
-    }
-    
-    if (!_description) {
-        _description = [[UILabel alloc] initWithFrame:CGRectMake(0, 285, self.view.frame.size.width, 15)];
-        [_adView addSubview:_description];
-    }
+    [self.view addSubview:self.nativeView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -76,38 +35,53 @@
 }
 
 - (IBAction)load:(id)sender {
-    [_nativeLoader load];
+    self.native = [[ADTNative alloc]initWithPlacmentID:@"109"];
+    self.native.delegate = self;
+    [self.native loadAd];
 }
 
 - (IBAction)show:(id)sender {
-    [_atNativeView removeFromSuperview];
-    _atNativeView  = nil;
-    [self setAdView];
-    [self loadData];
-    if (_nativeItem) {
-        _atNativeView = [[ATNativeView alloc] initWithFrame:CGRectMake(0, 200, self.view.frame.size.width, 300)];
-        [_atNativeView updateWithItem:_nativeItem];
-        [_atNativeView addAd:_adView];
-        [self.view addSubview:_atNativeView];
-        [_nativeLoader attach:_atNativeView];
+    self.nativeView.hidden = NO;
+    self.nativeView.nativeAd = self.nativeAd;
+    _iconView.image =[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.nativeAd.iconUrl]]];
+    _titleLabel.text = self.nativeAd.title;
+    _bodyLabel.text = self.nativeAd.body;
+}
+
+- (void)ADTNativeDidload:(ADTNativeAd*)nativeAd{
+    _nativeAd = nativeAd;
+    NSLog(@"广告加载成功");
+}
+
+- (ADTNativeView*)nativeView{
+    if(!_nativeView){
+        _nativeView = [[ADTNativeView alloc]initWithFrame:CGRectMake(0,300, self.view.frame.size.width, 300)];
+        _nativeView.mediaView = [[ADTNativeMediaView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 300)];
+        
+        _iconView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
+        [_nativeView addSubview:_iconView];
+        
+        _titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 270, self.view.frame.size.width, 15)];
+        _titleLabel.font = [UIFont systemFontOfSize:13];
+        [_nativeView addSubview:_titleLabel];
+        
+        _bodyLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 285, self.view.frame.size.width, 15)];
+        _bodyLabel.font = [UIFont systemFontOfSize:13];
+        [_nativeView addSubview:_bodyLabel];
     }
+    return _nativeView;
 }
 
-- (void)atNativeDidLoad:(ATNativeLoader *)native item:(ATNativeItem *)item {
-    _nativeItem = item;
-    NSLog(@"nativeAdDidLoad");
+- (void)ADTNativeDidFailToLoad:(NSError*)error{
+    NSLog(@"广告加载失败");
 }
 
-- (void)atNative:(ATNativeLoader *)native failWithError:(NSError *)error {
-    NSLog(@"nativeAddidFail");
+- (void)ADTNativeWillShow{
+    NSLog(@"广告即将展示");
 }
 
-- (void)atNativeWillExposure:(ATNativeLoader *)native {
-    NSLog(@"nativeAdWillExposure");
-}
-
-- (void)atNativeDidClick:(ATNativeLoader *)native {
-    NSLog(@"nativeAdDidClick");
+- (void)ADTNativeDidClick{
+    NSLog(@"点击广告");
 }
 
 @end

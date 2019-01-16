@@ -1,4 +1,4 @@
-![AdTiming: Ads in Swift](https://raw.githubusercontent.com/AdTiming-Swift/AdTiming/master/AdTimingLogo.jpg)
+![AdTiming: Ads in Swift](https://github.com/AdTiming-Swift/ADTimingSDKDemo/blob/master/AdTimingLogo.jpg?raw=true)
 
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/ADTiming.svg)](https://img.shields.io/cocoapods/v/ADTiming.svg)
 [![Platform](https://img.shields.io/cocoapods/p/ADTiming.svg?style=flat)](https://alamofire.github.io/ADTiming)
@@ -65,13 +65,13 @@ $ pod install
 ##### Find “Target” - “Building settings” - “Other Linker Flag”, Set its value to -ObjC or -all_load.(This step is very important, if you ignore the other platform ads will not be able to load)
 
 ##### Link Frameworks and Libraries
-![Link Frameworks and Libraries](https://raw.githubusercontent.com/AdTiming-Swift/AdTiming/master/Resource/ImportLibrary.png)
+![Link Frameworks and Libraries](https://github.com/AdTiming-Swift/ADTimingSDKDemo/blob/master/Resource/EmbeddedBinaries.png?raw=true)
 
 ##### App Transport Security Settings
-![App Transport Security Settings](https://raw.githubusercontent.com/AdTiming-Swift/AdTiming/master/Resource/AppSetting.png)
+![App Transport Security Settings](https://github.com/AdTiming-Swift/ADTimingSDKDemo/blob/master/Resource/AppSetting.png?raw=true)
 
 ##### Framework use in Objective-C
-![Objective-C Settings](https://raw.githubusercontent.com/AdTiming-Swift/AdTiming/master/Resource/Objective-C_settings.png)
+![Objective-C Settings](https://github.com/AdTiming-Swift/ADTimingSDKDemo/blob/master/Resource/Objective-C_settings.png?raw=true)
 
 ##### How to get AppKey and PlacementId?
 If you haven't [created an AdTiming account](http://www.adtiming.com/cn/signup.html) or [registered an app](https://publisher.adtiming.com/#/pubdev/publisher/publisher_placement.html) yet
@@ -80,11 +80,11 @@ If you are already our developer,Login to [adtiming](https://publisher.adtiming.
 
 Get your AppKey
 
-![AdTiming Get AppKey](https://raw.githubusercontent.com/AdTiming-Swift/AdTiming/master/Resource/get_appkey.png)
+![AdTiming Get AppKey](https://github.com/AdTiming-Swift/ADTimingSDKDemo/blob/master/Resource/get_appkey.png?raw=true)
 
 Get your PlacementId
 
-![AdTiming Get PlacementId](https://raw.githubusercontent.com/AdTiming-Swift/AdTiming/master/Resource/get_placementid.png)
+![AdTiming Get PlacementId](https://github.com/AdTiming-Swift/ADTimingSDKDemo/blob/master/Resource/get_placementid.png?raw=true)
 
 Now to load ADTiming
 

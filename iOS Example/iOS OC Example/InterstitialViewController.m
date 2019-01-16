@@ -6,11 +6,11 @@
 //
 
 #import "InterstitialViewController.h"
-#import <ADTiming/ADTiming.h>
 
-@interface InterstitialViewController () <ATInterstitialDelegate> {
-    ATInterstitial *_interstitial;
-}
+@import AdTiming;
+@interface InterstitialViewController () <ADTInterstitialDelegate>
+
+@property (nonatomic, strong) ADTInterstitial *interstitial;
 
 @end
 
@@ -19,9 +19,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    ATInterstitial *interstitial = [[ATInterstitial alloc] init:@"121"];
-    interstitial.delegate = self;
-    _interstitial = interstitial;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,31 +27,42 @@
 }
 
 - (IBAction)load:(id)sender {
-    [_interstitial load];
+    [self.interstitial load];
 }
 
 - (IBAction)show:(id)sender {
-    [_interstitial show:self];
+    [self.interstitial showWithRootViewController:self];
 }
 
-- (void)atInterstitialDidLoad:(ATInterstitial *)interstitial {
-    NSLog(@"interstitialAdDidLoad");
+- (void)adtInterstitialDidLoad:(ADTInterstitial *)adtInterstitial {
+    NSLog(@"广告加载完成");
 }
 
-- (void)atInterstitial:(ATInterstitial *)interstitial failWithError:(NSError *)error {
-    NSLog(@"interstitialAddidFail");
+- (void)adtInterstitial:(nonnull ADTInterstitial *)adtInterstitial didFailWithError:(nonnull NSError *)error {
+    NSLog(@"广告加载失败");
 }
 
-- (void)atInterstitialWillExposure:(ATInterstitial *)interstitial {
-    NSLog(@"interstitialAdWillExposure");
+
+- (void)adtInterstitialDidClick:(nonnull ADTInterstitial *)adtInterstitial {
+    NSLog(@"广告被点击");
 }
 
-- (void)atInterstitialDidClick:(ATInterstitial *)interstitial {
-    NSLog(@"interstitialAdDidClick");
+
+- (void)adtInterstitialDidClose:(nonnull ADTInterstitial *)adtInterstitial {
+    NSLog(@"广告已经关闭");
 }
 
-- (void)atInterstitialDidClose:(ATInterstitial *)interstitial {
-    NSLog(@"interstitialAdDidClose");
+
+- (void)adtInterstitialWillExposure:(nonnull ADTInterstitial *)adtInterstitial {
+    NSLog(@"广告将要展示");
+}
+
+- (ADTInterstitial*)interstitial{
+    if(!_interstitial){
+        _interstitial = [[ADTInterstitial alloc] initWithPlacementID:@"121"];
+        _interstitial.delegate = self;
+    }
+    return _interstitial;
 }
 
 @end

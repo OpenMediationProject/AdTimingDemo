@@ -6,10 +6,12 @@
 //
 
 #import "BannerViewController.h"
-#import <ADTiming/ADTiming.h>
 
-@interface BannerViewController () <ATBannerViewDelegate>
-@property (nonatomic , strong)ATBannerView *bannerView;
+
+@import AdTiming;
+@interface BannerViewController () <ADTBannerDelegate>
+@property (nonatomic, strong) ADTBanner *banner;
+
 @end
 
 @implementation BannerViewController
@@ -25,31 +27,33 @@
 }
 
 - (IBAction)loadShow:(id)sender {
-    if (!_bannerView) {
-        _bannerView = [[ATBannerView alloc] initWithFrame:CGRectZero adSize:ATBannerTypeNormal];
-        _bannerView.placementId = @"541";
-        _bannerView.delegate = self;
-        _bannerView.center = CGPointMake(self.view.center.x, self.view.center.y);
-        _bannerView.rootViewController = self;
-        [self.view addSubview:_bannerView];
+    [self.banner loadAndShow];
+}
+
+- (void)adtBannerDidLoad:(ADTBanner *)adtBanner {
+    NSLog(@"广告加载完成");
+}
+
+- (void)adtBanner:(ADTBanner *)adtBanner didFailWithError:(NSError *)error {
+    NSLog(@"广告加载失败");
+}
+
+- (void)adtBannerWillExposure:(ADTBanner *)adtBanner {
+    NSLog(@"广告将要展示");
+}
+
+- (void)adtBannerDidClick:(ADTBanner *)adtBanner {
+    NSLog(@"广告被点击");
+}
+
+- (ADTBanner*)banner{
+    if(!_banner){
+        _banner = [[ADTBanner alloc] initWithBannerType:ADTBannerTypeDefault placementID:@"541"];
+        [_banner addLayoutAttribute:ADTBannerLayoutAttributeHorizontally constant:0];
+        [_banner addLayoutAttribute:ADTBannerLayoutAttributeVertically constant:0];
+        _banner.delegate = self;
+        [self.view addSubview:_banner];
     }
-    [_bannerView loadAndShow];
+    return _banner;
 }
-
-- (void)atBannerDidLoad:(ATBannerView *)banner {
-    NSLog(@"bannerAdDidLoad");
-}
-
-- (void)atBanner:(ATBannerView *)banner failWithError:(NSError *)error {
-    NSLog(@"bannerAddidFail");
-}
-
-- (void)atBannerWillExposure:(ATBannerView *)banner {
-    NSLog(@"bannerAdWillExposure");
-}
-
-- (void)atBannerDidClick:(ATBannerView *)banner {
-    NSLog(@"bannerAdDidClick");
-}
-
 @end

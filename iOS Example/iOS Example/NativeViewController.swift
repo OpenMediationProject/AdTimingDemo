@@ -6,84 +6,62 @@
 //
 
 import UIKit
-import ADTiming
+
 
 class NativeViewController: UIViewController {
     
-    private lazy var nativeView: UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 300))
-        view.clipsToBounds = true
+    private lazy var iconView: UIImageView = {
+        let icon = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        return icon
+    }()
+    
+    private lazy var titleLabel: UILabel = {
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 270, width: UIScreen.main.bounds.size.width, height: 15))
+        titleLabel.font = UIFont.systemFont(ofSize: 13)
+        return titleLabel
+    }()
+    
+    private lazy var bodyLabel: UILabel = {
+        let bodyLabel = UILabel(frame: CGRect(x: 0, y: 285, width: UIScreen.main.bounds.size.width, height: 15))
+        bodyLabel.font = UIFont.systemFont(ofSize: 13)
+        return bodyLabel
+    }()
+    
+    var nativeAd: ADTNativeAd?
+    
+    private lazy var adtNativeView: ADTNativeView = {
+        let view = ADTNativeView(frame: CGRect(x: 0, y: 300, width: self.view.frame.size.width, height: 300))
+        view.mediaView = ADTNativeMediaView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 300))
+        
+        view.addSubview(self.iconView)
+        view.addSubview(self.titleLabel)
+        view.addSubview(self.bodyLabel)
+        
         return view
     }()
     
-    private lazy var mainView: UIImageView = {
-        let main = UIImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 300))
-        return main
+    private lazy var native: ADTNative = {
+        let native = ADTNative(placmentID: "109")
+        native.delegate = self
+        return native
     }()
     
-    private lazy var logoView: UIImageView = {
-        let main = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        return main
-    }()
-    
-    private lazy var titleView: UILabel = {
-        let l = UILabel(frame: CGRect(x: 0, y: 270, width: UIScreen.main.bounds.size.width, height: 15))
-        l.font = UIFont.systemFont(ofSize: 13)
-        return l
-    }()
-    
-    private lazy var bodyView: UILabel = {
-        let l = UILabel(frame: CGRect(x: 0, y: 285, width: UIScreen.main.bounds.size.width, height: 15))
-        l.font = UIFont.systemFont(ofSize: 13)
-        return l
-    }()
-    
-    var nativeItem: ATNativeItem?
-    
-    private lazy var atNativeView: ATNativeView = {
-        let view = ATNativeView(frame: CGRect(x: 0, y: 300, width: self.view.frame.size.width, height: 300))
-        return view
-    }()
-    
-    private lazy var nativeLoader: ATNativeLoader = {
-        let loader = ATNativeLoader()
-        loader.placementId = "109"
-        loader.rootViewController = self
-        loader.delegate = self
-        return loader
-    }()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-    }
-    
-    func addView() {
-        nativeView.addSubview(mainView)
-        nativeView.addSubview(logoView)
-        nativeView.addSubview(titleView)
-        nativeView.addSubview(bodyView)
-    }
-
-    func reloadView() {
-        mainView.sd_setImage(with: URL(string: nativeItem?.imageUrl ?? ""))
-        logoView.sd_setImage(with: URL(string: nativeItem?.iconUrl ?? ""))
-        titleView.text = nativeItem?.title
-        bodyView.text = nativeItem?.body
+        self.view.addSubview(self.adtNativeView)
     }
     
     @IBAction func load(_ sender: Any) {
-        nativeLoader.load()
+        self.native.loadAd()
     }
     
     @IBAction func show(_ sender: Any) {
-        addView()
-        reloadView()
-        atNativeView.addAd(nativeView)
-        self.view.addSubview(atNativeView)
-        atNativeView.update(item: nativeItem)
-        nativeLoader.attach(atNativeView)
+        self.adtNativeView.isHidden = false
+        self.adtNativeView.nativeAd = self.nativeAd!
+        self.iconView.image = UIImage(data: try! Data(contentsOf: URL(string: self.nativeAd?.iconUrl ?? "")!))
+        self.titleLabel.text = self.nativeAd?.title
+        self.bodyLabel.text = self.nativeAd?.body
     }
     
     override func didReceiveMemoryWarning() {
@@ -92,21 +70,21 @@ class NativeViewController: UIViewController {
     }
 }
 
-extension NativeViewController: ATNativeLoaderDelegate {
-    func atNativeDidLoad(_ native: ATNativeLoader, item: ATNativeItem) {
-        nativeItem = item
-        print("nativeAdDidLoad")
+extension NativeViewController: ADTNativeDelegate {
+    func adtNativeDidload(_ nativeAd: ADTNativeAd) {
+        self.nativeAd = nativeAd
     }
     
-    func atNative(_ native: ATNativeLoader, failWithError error: NSError) {
+    func adtNativeDidFail(toLoad error: Error) {
         print("nativeAddidFail")
     }
     
-    func atNativeWillExposure(_ native: ATNativeLoader) {
+    func adtNativeWillShow() {
         print("nativeAdWillExposure")
     }
     
-    func atNativeDidClick(_ native: ATNativeLoader) {
+    func adtNativeDidClick() {
         print("nativeAdDidClick")
     }
+    
 }

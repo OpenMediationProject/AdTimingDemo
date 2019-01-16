@@ -1,5 +1,5 @@
 PODS:
-  - ADTiming (3.0.3)
+  - ADTiming (3.2.2)
 
 DEPENDENCIES:
   - ADTiming
@@ -9,8 +9,8 @@ SPEC REPOS:
     - ADTiming
 
 SPEC CHECKSUMS:
-  ADTiming: e76e85a4ca208902469b88256059d0accbdf4ff6
+  ADTiming: f70063dbfa609220a17b948cc0ca1fa1c004f7a3
 
 PODFILE CHECKSUM: bbc2537e9dd99961fdf3362d5f495d24ab3dafad
 
-COCOAPODS: 1.5.2
+COCOAPODS: 1.5.3

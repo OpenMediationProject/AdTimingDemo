@@ -6,7 +6,7 @@
 //
 
 #import "AppDelegate.h"
-#import <ADTiming/ADTiming.h>
+@import AdTiming;
 
 @interface AppDelegate ()
 
@@ -17,8 +17,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [ATSDK registSDK:@"S0uMk2AiXq7L6vYwXJ9HtxLdmjSkQamp" success:^{
-        
+    [AdTimingAds initWithAppKey:@"S0uMk2AiXq7L6vYwXJ9HtxLdmjSkQamp" completionHandler:^(NSError *error) {
+        if (!error) {
+            NSLog(@"load success");
+        }
     }];
     
     return YES;

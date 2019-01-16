@@ -6,39 +6,39 @@
 //
 
 import UIKit
-import ADTiming
+
 
 class BannerViewController: UIViewController {
-
-    private lazy var bannerView: ATBannerView = {
-        let view = ATBannerView(frame: CGRect(x: 50, y: 300, width: 0, height: 0), adSize: .normal)
-        view.placementId = "541"
-        view.rootViewController = self
-        view.delegate = self
-        return view
+    
+    private lazy var banner: ADTBanner = {
+        let banner = ADTBanner(bannerType: ADTBannerType.default, placementID: "541")
+        banner.add(.horizontally, constant: 0)
+        banner.add(.vertically, constant: 0)
+        banner.delegate = self
+        return banner
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     @IBAction func loadshow(_ sender: Any) {
-        self.view.addSubview(bannerView)
-        bannerView.loadAndShow()
+        self.view.addSubview(banner)
+        banner.loadAndShow()
     }
     
-
+    
 }
 
-extension BannerViewController: ATBannerViewDelegate {
-    func atBannerDidLoad(_ banner: ATBannerView) {
+extension BannerViewController: ADTBannerDelegate {
+    func adtBannerDidLoad(_ adtBanner: ADTBanner) {
         print("bannerAdDidLoad")
         /* if you have use tencent ads
          DispatchQueue.main.async {
@@ -46,11 +46,12 @@ extension BannerViewController: ATBannerViewDelegate {
          }
          */
     }
-    func atBanner(_ banner: ATBannerView, failWithError error: NSError) {
+    
+    func adtBanner(_ adtBanner: ADTBanner, didFailWithError error: Error) {
         print("bannerAddidFail")
     }
     
-    func atBannerWillExposure(_ banner: ATBannerView) {
+    func adtBannerWillExposure(_ adtBanner: ADTBanner) {
         print("bannerAdWillExposure")
         /* if you have use tencent ads
          DispatchQueue.main.async {
@@ -59,7 +60,8 @@ extension BannerViewController: ATBannerViewDelegate {
          */
     }
     
-    func atBannerDidClick(_ banner: ATBannerView) {
+    func adtBannerDidClick(_ adtBanner: ADTBanner) {
         print("bannerAdDidClick")
     }
+    
 }

@@ -6,9 +6,9 @@
 //
 
 #import "VideoViewController.h"
-#import <ADTiming/ADTiming.h>
 
-@interface VideoViewController () <ATVideoDelegate>
+@import AdTiming;
+@interface VideoViewController () <ADTVideoAdDelegate>
 
 @end
 
@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[ATVideo shared] setDelegate:self];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -25,40 +25,37 @@
 }
 
 - (IBAction)load:(id)sender {
-    [[ATVideo shared] load:@"113"];
+    [ADTVideoAd sharedInstance].delegate = self;
+    [[ADTVideoAd sharedInstance]loadWithPlacmentID:@"113"];
 }
 
 - (IBAction)show:(id)sender {
-    // [[ATVideo shared] isReady:@"113"];
-    [[ATVideo shared] present:self placementId:@"113"];
+    [[ADTVideoAd sharedInstance] isReady:@"113"];
+    [[ADTVideoAd sharedInstance]show:@"113"];
 }
 
-- (void)atVideoDidLoad:(ATVideo *)video placementId:(NSString *)placementId {
-    NSLog(@"videoAdDidLoad");
+- (void)ADTVideoAdDidload:(NSString*)placementID{
+    NSLog(@"广告加载成功");
 }
 
-- (void)atVideo:(ATVideo *)video placementId:(NSString *)placementId failWithShow:(NSError *)error {
-    NSLog(@"videoAdShowFail");
+- (void)ADTVideoAdDidFailToLoad:(NSError*)error{
+    NSLog(@"广告加载成功");
 }
 
-- (void)atVideoStartPlay:(ATVideo *)video placementId:(NSString *)placementId {
-    NSLog(@"videoAdStartPlay");
+- (void)ADTVideoAdDidStart{
+    NSLog(@"广告开始播放");
 }
 
-- (void)atVideoDidClick:(ATVideo *)video placementId:(NSString *)placementId {
-    NSLog(@"videoAdDidClick");
+- (void)ADTVideoAdDidClick{
+    NSLog(@"点击广告");
 }
 
-- (void)atVideoFinishPlay:(ATVideo *)video placementId:(NSString *)placementId finishState:(enum ATVideoFinishState)finishState {
-    if (finishState == ATVideoFinishStateSkipped) {
-        NSLog(@"VideoAdSkip");
-    } else if (finishState == ATVideoFinishStateCompleted) {
-        NSLog(@"VideoAdCompleted");
+- (void)ADTVideoAdDidFinish:(ADTVideoAdFinishState)state{
+    if(state == ADTVideoAdFinishStateSkipped){
+        NSLog(@"广告播放完成(跳过)");
+    } else if (state == ADTVideoAdFinishStateCompleted){
+        NSLog(@"广告播放完成(完整)");
     }
-}
-
-- (void)atVideoDidClose:(ATVideo *)video placementId:(NSString *)placementId {
-    NSLog(@"VideoAdDidClose");
 }
 
 @end

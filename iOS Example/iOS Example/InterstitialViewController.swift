@@ -6,22 +6,22 @@
 //
 
 import UIKit
-import ADTiming
+//import ADTiming
 
 class InterstitialViewController: UIViewController {
-
-    private lazy var interstitial: ATInterstitial = {
-        let inter = ATInterstitial("121")
-        inter.delegate = self
-        return inter
+    
+    private lazy var interstitial: ADTInterstitial = {
+        let interstitial = ADTInterstitial(placementID: "121")
+        interstitial.delegate = self
+        return interstitial
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -32,29 +32,29 @@ class InterstitialViewController: UIViewController {
     }
     
     @IBAction func show(_ sender: Any) {
-        interstitial.show(self)
+        interstitial.show()
     }
     
 }
 
-extension InterstitialViewController: ATInterstitialDelegate {
-    func atInterstitialDidLoad(_ interstitial: ATInterstitial) {
+extension InterstitialViewController: ADTInterstitialDelegate {
+    func adtInterstitialDidLoad(_ adtInterstitial: ADTInterstitial) {
         print("interstitialAdDidLoad")
     }
     
-    func atInterstitial(_ interstitial: ATInterstitial, failWithError error: NSError) {
+    func adtInterstitial(_ adtInterstitial: ADTInterstitial, didFailWithError error: Error) {
         print("interstitialAddidFail")
     }
     
-    func atInterstitialWillExposure(_ interstitial: ATInterstitial) {
+    func adtInterstitialWillExposure(_ adtInterstitial: ADTInterstitial) {
         print("interstitialAdWillExposure")
     }
     
-    func atInterstitialDidClick(_ interstitial: ATInterstitial) {
+    func adtInterstitialDidClick(_ adtInterstitial: ADTInterstitial) {
         print("interstitialAdDidClick")
     }
     
-    func atInterstitialDidClose(_ interstitial: ATInterstitial) {
+    func adtInterstitialDidClose(_ adtInterstitial: ADTInterstitial) {
         print("interstitialAdDidClose")
     }
 }
