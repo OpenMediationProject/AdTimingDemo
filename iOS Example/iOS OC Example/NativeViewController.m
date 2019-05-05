@@ -50,7 +50,7 @@
 
 - (void)ADTNativeDidload:(ADTNativeAd*)nativeAd{
     _nativeAd = nativeAd;
-    NSLog(@"广告加载成功");
+    NSLog(@"广告加载成功 success");
 }
 
 - (ADTNativeView*)nativeView{
