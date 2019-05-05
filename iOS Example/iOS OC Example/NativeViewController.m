@@ -57,7 +57,7 @@
     if(!_nativeView){
         _nativeView = [[ADTNativeView alloc]initWithFrame:CGRectMake(0,300, self.view.frame.size.width, 300)];
         _nativeView.mediaView = [[ADTNativeMediaView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 300)];
-        
+        [_nativeView addSubview:_nativeView.mediaView];
         _iconView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
         [_nativeView addSubview:_iconView];
         

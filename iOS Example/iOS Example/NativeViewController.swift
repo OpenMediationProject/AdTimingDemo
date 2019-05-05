@@ -32,7 +32,7 @@ class NativeViewController: UIViewController {
     private lazy var adtNativeView: ADTNativeView = {
         let view = ADTNativeView(frame: CGRect(x: 0, y: 300, width: self.view.frame.size.width, height: 300))
         view.mediaView = ADTNativeMediaView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 300))
-        
+        view.addSubview(view.mediaView)
         view.addSubview(self.iconView)
         view.addSubview(self.titleLabel)
         view.addSubview(self.bodyLabel)
