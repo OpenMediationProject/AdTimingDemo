@@ -73,6 +73,7 @@ class NativeViewController: UIViewController {
 extension NativeViewController: ADTNativeDelegate {
     func adtNativeDidload(_ nativeAd: ADTNativeAd) {
         self.nativeAd = nativeAd
+        print("nativeAd load success")
     }
     
     func adtNativeDidFail(toLoad error: Error) {
