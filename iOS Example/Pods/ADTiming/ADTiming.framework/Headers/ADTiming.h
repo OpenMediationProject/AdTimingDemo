@@ -25,5 +25,6 @@
 #import <AdTiming/ADTNativeMediaView.h>
 
 #import <AdTiming/ADTVideoAd.h>
+#import <AdTiming/ADTInteractive.h>
 
 
