@@ -23,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)setLogEnable:(BOOL)logEnable;
 //Check that `AdTiming` has been initialized
 + (BOOL)isInitialized;
+/// setUserConsent @"0" is Refuse，@"1" is Accepted. Default is @"1"
++ (void)setUserConsent:(NSString *)consent;
 
 @end
 
