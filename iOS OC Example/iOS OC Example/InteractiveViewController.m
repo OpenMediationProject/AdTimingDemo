@@ -10,9 +10,8 @@
 #import <AdTiming/AdTiming.h>
 
 @interface InteractiveViewController ()<ADTInteractiveDelegate>
-{
-    ADTInteractive *_interactive;
-}
+
+@property(nonatomic, strong)ADTInteractive *interactive;
 
 @property(nonatomic,strong)UIButton *loadBtn;
 @property(nonatomic,strong)UIButton *showBtn;
