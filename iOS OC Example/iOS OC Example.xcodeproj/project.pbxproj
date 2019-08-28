@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CE49BB523168030003DFF52 /* AdTiming.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CE49BB423168030003DFF52 /* AdTiming.framework */; };
 		8EED1450229CE20D00166BCC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EED144F229CE20D00166BCC /* AppDelegate.m */; };
 		8EED1453229CE20D00166BCC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EED1452229CE20D00166BCC /* ViewController.m */; };
 		8EED1456229CE20D00166BCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EED1454229CE20D00166BCC /* Main.storyboard */; };
@@ -18,38 +19,6 @@
 		8EED14C2229CE2AE00166BCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EED14C0229CE2AE00166BCC /* Main.storyboard */; };
 		8EED14C4229CE2AF00166BCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EED14C3229CE2AF00166BCC /* Assets.xcassets */; };
 		8EED14C7229CE2AF00166BCC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EED14C5229CE2AF00166BCC /* LaunchScreen.storyboard */; };
-		8EED14E9229CE2F300166BCC /* BUAdSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EED14CD229CE2F300166BCC /* BUAdSDK.framework */; };
-		8EED14EA229CE2F300166BCC /* BUAdSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EED14CD229CE2F300166BCC /* BUAdSDK.framework */; };
-		8EED14EB229CE2F300166BCC /* Chartboost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EED14CE229CE2F300166BCC /* Chartboost.framework */; };
-		8EED14EC229CE2F300166BCC /* Chartboost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EED14CE229CE2F300166BCC /* Chartboost.framework */; };
-		8EED14ED229CE2F300166BCC /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EED14CF229CE2F300166BCC /* GoogleAppMeasurement.framework */; };
-		8EED14EE229CE2F300166BCC /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EED14CF229CE2F300166BCC /* GoogleAppMeasurement.framework */; };
-		8EED14EF229CE2F300166BCC /* Tapjoy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EED14D1229CE2F300166BCC /* Tapjoy.framework */; };
-		8EED14F0229CE2F300166BCC /* Tapjoy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EED14D1229CE2F300166BCC /* Tapjoy.framework */; };
-		8EED14F1229CE2F300166BCC /* TapjoyResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8EED14D3229CE2F300166BCC /* TapjoyResources.bundle */; };
-		8EED14F2229CE2F300166BCC /* TapjoyResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8EED14D3229CE2F300166BCC /* TapjoyResources.bundle */; };
-		8EED14F3229CE2F300166BCC /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EED14D4229CE2F300166BCC /* GoogleUtilities.framework */; };
-		8EED14F4229CE2F300166BCC /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EED14D4229CE2F300166BCC /* GoogleUtilities.framework */; };
-		8EED14F5229CE2F300166BCC /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EED14D5229CE2F300166BCC /* nanopb.framework */; };
-		8EED14F6229CE2F300166BCC /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EED14D5229CE2F300166BCC /* nanopb.framework */; };
-		8EED14F7229CE2F300166BCC /* UnityAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EED14D6229CE2F300166BCC /* UnityAds.framework */; };
-		8EED14F8229CE2F300166BCC /* UnityAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EED14D6229CE2F300166BCC /* UnityAds.framework */; };
-		8EED14F9229CE2F300166BCC /* libGDTMobSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EED14E1229CE2F300166BCC /* libGDTMobSDK.a */; };
-		8EED14FA229CE2F300166BCC /* libGDTMobSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EED14E1229CE2F300166BCC /* libGDTMobSDK.a */; };
-		8EED14FB229CE2F300166BCC /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EED14E2229CE2F300166BCC /* GoogleMobileAds.framework */; };
-		8EED14FC229CE2F300166BCC /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EED14E2229CE2F300166BCC /* GoogleMobileAds.framework */; };
-		8EED14FD229CE2F300166BCC /* VungleSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EED14E3229CE2F300166BCC /* VungleSDK.framework */; };
-		8EED14FE229CE2F300166BCC /* VungleSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EED14E3229CE2F300166BCC /* VungleSDK.framework */; };
-		8EED14FF229CE2F300166BCC /* AppLovinSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EED14E4229CE2F300166BCC /* AppLovinSDK.framework */; };
-		8EED1500229CE2F300166BCC /* AppLovinSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EED14E4229CE2F300166BCC /* AppLovinSDK.framework */; };
-		8EED1501229CE2F300166BCC /* AdTiming.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EED14E5229CE2F300166BCC /* AdTiming.framework */; };
-		8EED1502229CE2F300166BCC /* AdTiming.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EED14E5229CE2F300166BCC /* AdTiming.framework */; };
-		8EED1503229CE2F300166BCC /* BUAdSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8EED14E6229CE2F300166BCC /* BUAdSDK.bundle */; };
-		8EED1504229CE2F300166BCC /* BUAdSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8EED14E6229CE2F300166BCC /* BUAdSDK.bundle */; };
-		8EED1505229CE2F300166BCC /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EED14E7229CE2F300166BCC /* FBAudienceNetwork.framework */; };
-		8EED1506229CE2F300166BCC /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EED14E7229CE2F300166BCC /* FBAudienceNetwork.framework */; };
-		8EED1507229CE2F300166BCC /* AdColony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EED14E8229CE2F300166BCC /* AdColony.framework */; };
-		8EED1508229CE2F300166BCC /* AdColony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EED14E8229CE2F300166BCC /* AdColony.framework */; };
 		8EED150B229CE38400166BCC /* BannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EED150A229CE38400166BCC /* BannerViewController.m */; };
 		8EED150E229CE38E00166BCC /* NativeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EED150D229CE38E00166BCC /* NativeViewController.m */; };
 		8EED1511229CE3A500166BCC /* InterstitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EED1510229CE3A500166BCC /* InterstitialViewController.m */; };
@@ -115,6 +84,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0CE49BB423168030003DFF52 /* AdTiming.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AdTiming.framework; sourceTree = "<group>"; };
 		8EED144B229CE20D00166BCC /* iOS OC Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS OC Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EED144E229CE20D00166BCC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8EED144F229CE20D00166BCC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -132,31 +102,6 @@
 		8EED14C3229CE2AF00166BCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8EED14C6229CE2AF00166BCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8EED14C8229CE2AF00166BCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8EED14CD229CE2F300166BCC /* BUAdSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BUAdSDK.framework; sourceTree = "<group>"; };
-		8EED14CE229CE2F300166BCC /* Chartboost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Chartboost.framework; sourceTree = "<group>"; };
-		8EED14CF229CE2F300166BCC /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleAppMeasurement.framework; sourceTree = "<group>"; };
-		8EED14D1229CE2F300166BCC /* Tapjoy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Tapjoy.framework; sourceTree = "<group>"; };
-		8EED14D3229CE2F300166BCC /* TapjoyResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TapjoyResources.bundle; sourceTree = "<group>"; };
-		8EED14D4229CE2F300166BCC /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleUtilities.framework; sourceTree = "<group>"; };
-		8EED14D5229CE2F300166BCC /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = nanopb.framework; sourceTree = "<group>"; };
-		8EED14D6229CE2F300166BCC /* UnityAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UnityAds.framework; sourceTree = "<group>"; };
-		8EED14D8229CE2F300166BCC /* GDTNativeExpressAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTNativeExpressAdView.h; sourceTree = "<group>"; };
-		8EED14D9229CE2F300166BCC /* GDTMobBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTMobBannerView.h; sourceTree = "<group>"; };
-		8EED14DA229CE2F300166BCC /* GDTNativeAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTNativeAd.h; sourceTree = "<group>"; };
-		8EED14DB229CE2F300166BCC /* GDTSDKConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTSDKConfig.h; sourceTree = "<group>"; };
-		8EED14DC229CE2F300166BCC /* GDTMobInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTMobInterstitial.h; sourceTree = "<group>"; };
-		8EED14DD229CE2F300166BCC /* GDTRewardVideoAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTRewardVideoAd.h; sourceTree = "<group>"; };
-		8EED14DE229CE2F300166BCC /* GDTSplashAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTSplashAd.h; sourceTree = "<group>"; };
-		8EED14DF229CE2F300166BCC /* GDTNativeExpressAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTNativeExpressAd.h; sourceTree = "<group>"; };
-		8EED14E0229CE2F300166BCC /* GDTSDKDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTSDKDefines.h; sourceTree = "<group>"; };
-		8EED14E1229CE2F300166BCC /* libGDTMobSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGDTMobSDK.a; sourceTree = "<group>"; };
-		8EED14E2229CE2F300166BCC /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
-		8EED14E3229CE2F300166BCC /* VungleSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VungleSDK.framework; sourceTree = "<group>"; };
-		8EED14E4229CE2F300166BCC /* AppLovinSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppLovinSDK.framework; sourceTree = "<group>"; };
-		8EED14E5229CE2F300166BCC /* AdTiming.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AdTiming.framework; sourceTree = "<group>"; };
-		8EED14E6229CE2F300166BCC /* BUAdSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BUAdSDK.bundle; sourceTree = "<group>"; };
-		8EED14E7229CE2F300166BCC /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
-		8EED14E8229CE2F300166BCC /* AdColony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AdColony.framework; sourceTree = "<group>"; };
 		8EED1509229CE38400166BCC /* BannerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannerViewController.h; sourceTree = "<group>"; };
 		8EED150A229CE38400166BCC /* BannerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannerViewController.m; sourceTree = "<group>"; };
 		8EED150C229CE38E00166BCC /* NativeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NativeViewController.h; sourceTree = "<group>"; };
@@ -224,6 +169,7 @@
 				8EED153B229CE6B000166BCC /* CoreVideo.framework in Frameworks */,
 				8EED1539229CE6A900166BCC /* GLKit.framework in Frameworks */,
 				8EED1537229CE69F00166BCC /* JavaScriptCore.framework in Frameworks */,
+				0CE49BB523168030003DFF52 /* AdTiming.framework in Frameworks */,
 				8EED1535229CE69500166BCC /* MobileCoreServices.framework in Frameworks */,
 				8EED1533229CE67200166BCC /* MediaPlayer.framework in Frameworks */,
 				8EED1531229CE66800166BCC /* OpenGLES.framework in Frameworks */,
@@ -238,20 +184,6 @@
 				8EED151F229CE5E300166BCC /* libsqlite3.tbd in Frameworks */,
 				8EED151D229CE4E200166BCC /* libresolv.tbd in Frameworks */,
 				8EED151B229CE4DA00166BCC /* Photos.framework in Frameworks */,
-				8EED14FB229CE2F300166BCC /* GoogleMobileAds.framework in Frameworks */,
-				8EED14E9229CE2F300166BCC /* BUAdSDK.framework in Frameworks */,
-				8EED14EB229CE2F300166BCC /* Chartboost.framework in Frameworks */,
-				8EED1501229CE2F300166BCC /* AdTiming.framework in Frameworks */,
-				8EED14F7229CE2F300166BCC /* UnityAds.framework in Frameworks */,
-				8EED14F9229CE2F300166BCC /* libGDTMobSDK.a in Frameworks */,
-				8EED14ED229CE2F300166BCC /* GoogleAppMeasurement.framework in Frameworks */,
-				8EED14F3229CE2F300166BCC /* GoogleUtilities.framework in Frameworks */,
-				8EED14F5229CE2F300166BCC /* nanopb.framework in Frameworks */,
-				8EED1507229CE2F300166BCC /* AdColony.framework in Frameworks */,
-				8EED14FF229CE2F300166BCC /* AppLovinSDK.framework in Frameworks */,
-				8EED14FD229CE2F300166BCC /* VungleSDK.framework in Frameworks */,
-				8EED14EF229CE2F300166BCC /* Tapjoy.framework in Frameworks */,
-				8EED1505229CE2F300166BCC /* FBAudienceNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,20 +217,6 @@
 				8EED1550229D1A8D00166BCC /* MediaPlayer.framework in Frameworks */,
 				8EED154F229D1A8200166BCC /* libresolv.tbd in Frameworks */,
 				8EED154E229D1A7900166BCC /* Photos.framework in Frameworks */,
-				8EED14FC229CE2F300166BCC /* GoogleMobileAds.framework in Frameworks */,
-				8EED14EA229CE2F300166BCC /* BUAdSDK.framework in Frameworks */,
-				8EED14EC229CE2F300166BCC /* Chartboost.framework in Frameworks */,
-				8EED1502229CE2F300166BCC /* AdTiming.framework in Frameworks */,
-				8EED14F8229CE2F300166BCC /* UnityAds.framework in Frameworks */,
-				8EED14FA229CE2F300166BCC /* libGDTMobSDK.a in Frameworks */,
-				8EED14EE229CE2F300166BCC /* GoogleAppMeasurement.framework in Frameworks */,
-				8EED14F4229CE2F300166BCC /* GoogleUtilities.framework in Frameworks */,
-				8EED14F6229CE2F300166BCC /* nanopb.framework in Frameworks */,
-				8EED1508229CE2F300166BCC /* AdColony.framework in Frameworks */,
-				8EED1500229CE2F300166BCC /* AppLovinSDK.framework in Frameworks */,
-				8EED14FE229CE2F300166BCC /* VungleSDK.framework in Frameworks */,
-				8EED14F0229CE2F300166BCC /* Tapjoy.framework in Frameworks */,
-				8EED1506229CE2F300166BCC /* FBAudienceNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,57 +291,9 @@
 		8EED14CC229CE2F300166BCC /* AdNetwork */ = {
 			isa = PBXGroup;
 			children = (
-				8EED14CD229CE2F300166BCC /* BUAdSDK.framework */,
-				8EED14CE229CE2F300166BCC /* Chartboost.framework */,
-				8EED14CF229CE2F300166BCC /* GoogleAppMeasurement.framework */,
-				8EED14D0229CE2F300166BCC /* Tapjoy.embeddedframework */,
-				8EED14D4229CE2F300166BCC /* GoogleUtilities.framework */,
-				8EED14D5229CE2F300166BCC /* nanopb.framework */,
-				8EED14D6229CE2F300166BCC /* UnityAds.framework */,
-				8EED14D7229CE2F300166BCC /* GDT */,
-				8EED14E2229CE2F300166BCC /* GoogleMobileAds.framework */,
-				8EED14E3229CE2F300166BCC /* VungleSDK.framework */,
-				8EED14E4229CE2F300166BCC /* AppLovinSDK.framework */,
-				8EED14E5229CE2F300166BCC /* AdTiming.framework */,
-				8EED14E6229CE2F300166BCC /* BUAdSDK.bundle */,
-				8EED14E7229CE2F300166BCC /* FBAudienceNetwork.framework */,
-				8EED14E8229CE2F300166BCC /* AdColony.framework */,
+				0CE49BB423168030003DFF52 /* AdTiming.framework */,
 			);
 			path = AdNetwork;
-			sourceTree = "<group>";
-		};
-		8EED14D0229CE2F300166BCC /* Tapjoy.embeddedframework */ = {
-			isa = PBXGroup;
-			children = (
-				8EED14D1229CE2F300166BCC /* Tapjoy.framework */,
-				8EED14D2229CE2F300166BCC /* Resources */,
-			);
-			path = Tapjoy.embeddedframework;
-			sourceTree = "<group>";
-		};
-		8EED14D2229CE2F300166BCC /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				8EED14D3229CE2F300166BCC /* TapjoyResources.bundle */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		8EED14D7229CE2F300166BCC /* GDT */ = {
-			isa = PBXGroup;
-			children = (
-				8EED14D8229CE2F300166BCC /* GDTNativeExpressAdView.h */,
-				8EED14D9229CE2F300166BCC /* GDTMobBannerView.h */,
-				8EED14DA229CE2F300166BCC /* GDTNativeAd.h */,
-				8EED14DB229CE2F300166BCC /* GDTSDKConfig.h */,
-				8EED14DC229CE2F300166BCC /* GDTMobInterstitial.h */,
-				8EED14DD229CE2F300166BCC /* GDTRewardVideoAd.h */,
-				8EED14DE229CE2F300166BCC /* GDTSplashAd.h */,
-				8EED14DF229CE2F300166BCC /* GDTNativeExpressAd.h */,
-				8EED14E0229CE2F300166BCC /* GDTSDKDefines.h */,
-				8EED14E1229CE2F300166BCC /* libGDTMobSDK.a */,
-			);
-			path = GDT;
 			sourceTree = "<group>";
 		};
 		8EED1519229CE4DA00166BCC /* Frameworks */ = {
@@ -544,11 +414,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EED14F1229CE2F300166BCC /* TapjoyResources.bundle in Resources */,
 				8EED145B229CE20E00166BCC /* LaunchScreen.storyboard in Resources */,
 				8EED1458229CE20E00166BCC /* Assets.xcassets in Resources */,
 				8EED1456229CE20D00166BCC /* Main.storyboard in Resources */,
-				8EED1503229CE2F300166BCC /* BUAdSDK.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,11 +424,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EED14F2229CE2F300166BCC /* TapjoyResources.bundle in Resources */,
 				8EED14C7229CE2AF00166BCC /* LaunchScreen.storyboard in Resources */,
 				8EED14C4229CE2AF00166BCC /* Assets.xcassets in Resources */,
 				8EED14C2229CE2AE00166BCC /* Main.storyboard in Resources */,
-				8EED1504229CE2F300166BCC /* BUAdSDK.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -57,16 +57,16 @@
 -(void)loadBtnDidClicked
 {
     // LoadVideo
-    [[ADTVideoAd sharedInstance]loadWithPlacmentID:@"113"];
+    [[ADTVideoAd sharedInstance]loadWithPlacmentID:@"5508"];
 }
 
 -(void)showBtnDidClicked
 {
     // isAdReady
-    [[ADTVideoAd sharedInstance] isReady:@"113"];
+    [[ADTVideoAd sharedInstance] isReady:@"5508"];
     
     // ShowVideo
-    [[ADTVideoAd sharedInstance]show:@"113"];
+    [[ADTVideoAd sharedInstance]show:@"5508"];
 }
 
 #pragma mark -- ADTVideoAdDelegate

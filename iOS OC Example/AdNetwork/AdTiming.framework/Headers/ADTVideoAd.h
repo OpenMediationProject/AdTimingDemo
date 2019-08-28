@@ -14,11 +14,17 @@ NS_ASSUME_NONNULL_BEGIN
 /// A modal view controller to represent a video ad. This is a full-screen ad shown in your application.
 @interface ADTVideoAd : NSObject
 
-/// the delegate
-@property (nonatomic, weak) id<ADTVideoAdDelegate> delegate;
-
 /// Returns the singleton instance.
 + (instancetype)sharedInstance;
+
+/// set delegate
+- (void)setDelegate:(id<ADTVideoAdDelegate>)delegate __attribute__((deprecated("Please migrate to using addDelegate and removeDelegate")));
+
+/// add delegate
+- (void)addDelegate:(id<ADTVideoAdDelegate>)delegate;
+
+/// remove delegate
+- (void)removeDelegate:(id<ADTVideoAdDelegate>)delegate;
 
 /// Begins loading the ADTVideoAd content.
 - (void)loadWithPlacmentID:(NSString*)placementID;

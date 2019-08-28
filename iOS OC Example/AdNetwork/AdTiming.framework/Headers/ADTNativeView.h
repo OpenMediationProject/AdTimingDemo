@@ -20,6 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// This is a method to initialize an ADTNativeView.
 /// Parameter frame: the ADTNativeView frame.
 - (instancetype)initWithFrame:(CGRect)frame;
+
+- (void)setFbNativeClickableViews:(NSArray<UIView *> *)clickableViews;
+
 @end
 
 NS_ASSUME_NONNULL_END
