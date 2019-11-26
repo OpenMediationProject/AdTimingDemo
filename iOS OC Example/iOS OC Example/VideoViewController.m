@@ -55,7 +55,7 @@
 
 /// Invoked when rewarded video is available.
 /// You can then show the video by calling the show method.
-- (void)adtmingRewardedVideoChangedAvailability:(BOOL)available{
+- (void)adtimingRewardedVideoChangedAvailability:(BOOL)available{
      if(available){
         NSLog(@"VideoAd is Available");
      }
