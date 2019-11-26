@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import AdTiming
+import AdTimingSDK
 
-class VideoViewController: UIViewController, ADTVideoAdDelegate {
+class VideoViewController: UIViewController, AdTimingRewardedVideoDelegate {
 
     var logLabel = UILabel()
     
@@ -19,18 +19,7 @@ class VideoViewController: UIViewController, ADTVideoAdDelegate {
         self.title = "Video"
         self.view.backgroundColor = UIColor.white
         
-        let loadBtn:UIButton = UIButton(frame: CGRect(x: 20, y: 120, width: 120, height: 30))
-        loadBtn.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
-        loadBtn.backgroundColor = UIColor.white
-        loadBtn.setTitleColor(UIColor.blue, for: .normal)
-        loadBtn.setTitleColor(UIColor.gray, for: .highlighted)
-        loadBtn.setTitleColor(UIColor.gray, for: .selected)
-        loadBtn.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-        loadBtn.setTitle("Load", for: .normal)
-        loadBtn.addTarget(self, action: #selector(loadBtnDidClicked), for: .touchUpInside)
-        self.view.addSubview(loadBtn)
-        
-        let showBtn:UIButton = UIButton(frame: CGRect(x: 20, y: loadBtn.frame.maxY+20, width: 120, height: 30))
+        let showBtn:UIButton = UIButton(frame: CGRect(x: 20, y: 120, width: 120, height: 30))
         showBtn.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
         showBtn.backgroundColor = UIColor.white
         showBtn.setTitleColor(UIColor.blue, for: .normal)
@@ -47,41 +36,42 @@ class VideoViewController: UIViewController, ADTVideoAdDelegate {
         self.view.addSubview(logLabel)
     }
     
-    @objc func loadBtnDidClicked(){
-        ADTVideoAd.sharedInstance().delegate = self
-        ADTVideoAd.sharedInstance().load(withPlacmentID: "113")
-    }
-    
     @objc func showBtnDidClicked(){
-        ADTVideoAd.sharedInstance().isReady("113")
-        ADTVideoAd.sharedInstance().show("113")
+        if AdTimingRewardedVideoAd.sharedInstance().isReady() {
+            AdTimingRewardedVideoAd.sharedInstance().show(with: self, scene: "")
+        }
     }
     
-
-    func adtVideoAdDidload(_ placementID: String) {
-        print("videoAdDidLoad")
-        self.logLabel.text = "load success"
+    func adtimingRewardedVideoChangedAvailability(_ available: Bool) {
+        if available {
+           print("VideoAd is Available")
+        }
     }
     
-    func adtVideoAdDidFail(toLoad placementID: String, error: Error) {
-        print("videoAdShowFail")
-        self.logLabel.text = "load fail"
+    func adtimingRewardedVideoDidOpen(_ scene: AdTimingScene) {
+        print("VideoAd is Open")
     }
     
-    func adtVideoAdDidStart(_ placementID: String) {
-        print("VideoAdStartPlay")
-        self.logLabel.text = ""
+    func adtimingRewardedVideoPlayStart(_ scene: AdTimingScene) {
+        print("videoAdStartPlay")
     }
     
-    func adtVideoAdDidClick(_ placementID: String) {
+    func adtimingRewardedVideoDidClick(_ scene: AdTimingScene) {
         print("videoAdDidClick")
     }
+
+    func adtimingRewardedVideoPlayEnd(_ scene: AdTimingScene) {
+        print("videoAdPlayEnd")    }
     
-    func adtVideoAdDidClose(_ placementID: String, finishState state: ADTVideoAdFinishState) {
-        if state == .skipped {
-            print("VideoAdSkipped")
-        } else if state == .completed {
-            print("VideoAdCompleted")
-        }
+    func adtimingRewardedVideoDidClose(_ scene: AdTimingScene) {
+        print("videoAdDidClose")
+    }
+
+    func adtimingRewardedVideoDidReceiveReward(_ scene: AdTimingScene) {
+        print("videoAdReceiveReward")
+    }
+    
+    func adtimingRewardedVideoDidFail(toShow scene: AdTimingScene, withError error: Error) {
+        print("videoAdFailedToPlay")
     }
 }

@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0CE49BB523168030003DFF52 /* AdTiming.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CE49BB423168030003DFF52 /* AdTiming.framework */; };
+		0C18645F238D22D7002C7595 /* AdTimingSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C18645E238D22D7002C7595 /* AdTimingSDK.framework */; };
+		0C186461238D22E9002C7595 /* AdTimingSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C186460238D22E9002C7595 /* AdTimingSDK.framework */; };
 		8EED1450229CE20D00166BCC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EED144F229CE20D00166BCC /* AppDelegate.m */; };
 		8EED1453229CE20D00166BCC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EED1452229CE20D00166BCC /* ViewController.m */; };
 		8EED1456229CE20D00166BCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EED1454229CE20D00166BCC /* Main.storyboard */; };
@@ -84,7 +85,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0CE49BB423168030003DFF52 /* AdTiming.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AdTiming.framework; sourceTree = "<group>"; };
+		0C18645E238D22D7002C7595 /* AdTimingSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdTimingSDK.framework; path = AdNetwork/AdTimingSDK.framework; sourceTree = SOURCE_ROOT; };
+		0C186460238D22E9002C7595 /* AdTimingSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdTimingSDK.framework; path = AdNetwork/AdTimingSDK.framework; sourceTree = SOURCE_ROOT; };
 		8EED144B229CE20D00166BCC /* iOS OC Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS OC Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EED144E229CE20D00166BCC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8EED144F229CE20D00166BCC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C186461238D22E9002C7595 /* AdTimingSDK.framework in Frameworks */,
 				8EED154D229CE76B00166BCC /* libxml2.tbd in Frameworks */,
 				8EED154B229CE75F00166BCC /* libc++.1.tbd in Frameworks */,
 				8EED1549229CE75100166BCC /* libz.tbd in Frameworks */,
@@ -169,7 +172,6 @@
 				8EED153B229CE6B000166BCC /* CoreVideo.framework in Frameworks */,
 				8EED1539229CE6A900166BCC /* GLKit.framework in Frameworks */,
 				8EED1537229CE69F00166BCC /* JavaScriptCore.framework in Frameworks */,
-				0CE49BB523168030003DFF52 /* AdTiming.framework in Frameworks */,
 				8EED1535229CE69500166BCC /* MobileCoreServices.framework in Frameworks */,
 				8EED1533229CE67200166BCC /* MediaPlayer.framework in Frameworks */,
 				8EED1531229CE66800166BCC /* OpenGLES.framework in Frameworks */,
@@ -191,6 +193,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C18645F238D22D7002C7595 /* AdTimingSDK.framework in Frameworks */,
 				8EED156C229D1B8700166BCC /* AdSupport.framework in Frameworks */,
 				8EED156B229D1B7F00166BCC /* libc++.tbd in Frameworks */,
 				8EED1569229D1B7600166BCC /* libxml2.tbd in Frameworks */,
@@ -226,7 +229,6 @@
 		8EED1442229CE20D00166BCC = {
 			isa = PBXGroup;
 			children = (
-				8EED14CC229CE2F300166BCC /* AdNetwork */,
 				8EED144D229CE20D00166BCC /* iOS OC Example */,
 				8EED14BB229CE2AE00166BCC /* iOS Swift Example */,
 				8EED144C229CE20D00166BCC /* Products */,
@@ -246,6 +248,7 @@
 		8EED144D229CE20D00166BCC /* iOS OC Example */ = {
 			isa = PBXGroup;
 			children = (
+				0C186460238D22E9002C7595 /* AdTimingSDK.framework */,
 				8EED144E229CE20D00166BCC /* AppDelegate.h */,
 				8EED144F229CE20D00166BCC /* AppDelegate.m */,
 				8EED1451229CE20D00166BCC /* ViewController.h */,
@@ -273,6 +276,7 @@
 		8EED14BB229CE2AE00166BCC /* iOS Swift Example */ = {
 			isa = PBXGroup;
 			children = (
+				0C18645E238D22D7002C7595 /* AdTimingSDK.framework */,
 				8EED14BC229CE2AE00166BCC /* AppDelegate.swift */,
 				8EED14BE229CE2AE00166BCC /* ViewController.swift */,
 				8EED156F229D2B1500166BCC /* BannerViewController.swift */,
@@ -286,14 +290,6 @@
 				8EED14C8229CE2AF00166BCC /* Info.plist */,
 			);
 			path = "iOS Swift Example";
-			sourceTree = "<group>";
-		};
-		8EED14CC229CE2F300166BCC /* AdNetwork */ = {
-			isa = PBXGroup;
-			children = (
-				0CE49BB423168030003DFF52 /* AdTiming.framework */,
-			);
-			path = AdNetwork;
 			sourceTree = "<group>";
 		};
 		8EED1519229CE4DA00166BCC /* Frameworks */ = {

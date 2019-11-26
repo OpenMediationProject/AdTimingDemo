@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
-#import <AdTiming/AdTiming.h>
+#import <AdTimingSDK/AdTimingSDK.h>
 
 @interface AppDelegate ()
 
@@ -24,12 +24,8 @@
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:[[ViewController alloc] init]];
     self.window.rootViewController = nc;
     [self.window makeKeyAndVisible];
-    
-    [AdTimingAds initWithAppKey:@"9VZ3w6VCOd8BTjJJEeGokHJNHwSm57m3" completionHandler:^(NSError *error) {
-        if (!error) {
-            NSLog(@"AdTiming init success");
-        }
-    }];
+
+    [AdTiming initWithAppKey:@"9VZ3w6VCOd8BTjJJEeGokHJNHwSm57m3"];
 
     return YES;
 }

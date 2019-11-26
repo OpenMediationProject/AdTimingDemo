@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import AdTiming
+import AdTimingSDK
 
-class NativeViewController: UIViewController, ADTNativeDelegate {
+class NativeViewController: UIViewController, AdTimingNativeDelegate {
 
     private lazy var iconView: UIImageView = {
         let icon = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
@@ -28,11 +28,11 @@ class NativeViewController: UIViewController, ADTNativeDelegate {
         return bodyLabel
     }()
     
-    var nativeAd: ADTNativeAd?
+    var nativeAd: AdTimingNativeAd?
     
-    private lazy var adtNativeView: ADTNativeView = {
-        let view = ADTNativeView(frame: CGRect(x: 0, y: 300, width: self.view.frame.size.width, height: 300))
-        view.mediaView = ADTNativeMediaView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 300))
+    private lazy var adtNativeView: AdTimingNativeView = {
+        let view = AdTimingNativeView(frame: CGRect(x: 0, y: 300, width: self.view.frame.size.width, height: 300))
+        view.mediaView = AdTimingNativeMediaView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 300))
         view.addSubview(view.mediaView)
         view.addSubview(self.iconView)
         view.addSubview(self.titleLabel)
@@ -41,8 +41,8 @@ class NativeViewController: UIViewController, ADTNativeDelegate {
         return view
     }()
     
-    private lazy var native: ADTNative = {
-        let native = ADTNative(placmentID: "109")
+    private lazy var native: AdTimingNative = {
+        let native = AdTimingNative(placementID: "109")
         native.delegate = self
         self.view.addSubview(adtNativeView)
         return native
@@ -96,23 +96,23 @@ class NativeViewController: UIViewController, ADTNativeDelegate {
         self.bodyLabel.text = self.nativeAd?.body
     }
     
-    func adtNative(_ native: ADTNative, didLoad nativeAd: ADTNativeAd) {
+    func adtimingNative(_ native: AdTimingNative, didLoad nativeAd: AdTimingNativeAd) {
         print("nativeAd load success")
         self.nativeAd = nativeAd;
         self.logLabel.text = "load success"
     }
     
-    func adtNative(_ native: ADTNative, didFailWithError error: Error) {
+    func adtimingNative(_ native: AdTimingNative, didFailWithError error: Error) {
         print("nativeAddidFail")
         self.logLabel.text = "load fail"
     }
     
-    func adtNativeWillExposure(_ native: ADTNative) {
+    func adtimingNativeWillExposure(_ native: AdTimingNative) {
         print("nativeAdWillExposure")
         self.logLabel.text = ""
     }
     
-    func adtNativeDidClick(_ native: ADTNative) {
+    func adtimingNativeDidClick(_ native: AdTimingNative) {
         print("nativeAdDidClick")
     }
     

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AdTiming
+import AdTimingSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,12 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = nav
         self.window?.backgroundColor = UIColor.white
         self.window?.makeKeyAndVisible()
-        AdTimingAds.initWithAppKey("S0uMk2AiXq7L6vYwXJ9HtxLdmjSkQamp") { (error) in
-            if (error == nil) {
-                print("Init success")
-            }
-        }
-        
+        AdTiming.initWithAppKey("S0uMk2AiXq7L6vYwXJ9HtxLdmjSkQamp")
         return true
     }
     

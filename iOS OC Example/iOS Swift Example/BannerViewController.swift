@@ -7,12 +7,12 @@
 //
 
 import UIKit
-import AdTiming
+import AdTimingSDK
 
-class BannerViewController: UIViewController, ADTBannerDelegate {
-
-    private lazy var banner: ADTBanner = {
-        let banner = ADTBanner(bannerType: ADTBannerType.smart, placementID: "111")
+class BannerViewController: UIViewController, AdTimingBannerDelegate {
+    
+    private lazy var banner: AdTimingBanner = {
+        let banner = AdTimingBanner(bannerType: AdTimingBannerType.smart, placementID: "111")
         banner.add(.horizontally, constant: 0)
         banner.add(.vertically, constant: 0)
         banner.delegate = self
@@ -49,26 +49,23 @@ class BannerViewController: UIViewController, ADTBannerDelegate {
     @objc func loadBtnDidClicked(){
         banner.loadAndShow()
     }
-
-    func adtBannerDidLoad(_ banner: ADTBanner) {
+    
+    func adtimingBannerDidLoad(_ banner: AdTimingBanner) {
         print("bannerAdDidLoad")
         logLabel.text = "load success"
     }
     
-    func adtBanner(_ banner: ADTBanner, didFailWithError error: Error) {
-        print("bannerAddidFail")
-        logLabel.text = "load fail"
+    func adtimingBanner(_ banner: AdTimingBanner, didFailWithError error: Error) {
+        print("bannerAdDidFail")
     }
     
-    func adtBannerWillExposure(_ banner: ADTBanner) {
+    func adtimingBannerWillExposure(_ banner: AdTimingBanner) {
         print("bannerAdWillExposure")
-        logLabel.text = ""
     }
     
-    func adtBannerDidClick(_ banner: ADTBanner) {
+    func adtimingBannerDidClick(_ banner: AdTimingBanner) {
         print("bannerAdDidClick")
     }
-
     
 }
 

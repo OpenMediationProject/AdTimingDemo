@@ -7,11 +7,9 @@
 //
 
 #import "InterstitialViewController.h"
-#import <AdTiming/AdTiming.h>
+#import <AdTimingSDK/AdTimingSDK.h>
 
-@interface InterstitialViewController ()<ADTInterstitialDelegate>
-
-@property (nonatomic, strong) ADTInterstitial *interstitial;
+@interface InterstitialViewController ()<AdTimingInterstitialAdDelegate>
 
 @property(nonatomic,strong)UIButton *loadBtn;
 @property(nonatomic,strong)UIButton *showBtn;
@@ -23,19 +21,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.title = @"Interstitial";
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    self.loadBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    self.loadBtn.frame = CGRectMake(20, 120, 120, 30);
-    [self.loadBtn setTitle:@"Load" forState:UIControlStateNormal];
-    self.loadBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    self.loadBtn.backgroundColor = [UIColor whiteColor];
-    self.loadBtn.titleLabel.font = [UIFont boldSystemFontOfSize:18];
-    self.loadBtn.layer.cornerRadius = 5;
-    [self.loadBtn addTarget:self action:@selector(loadBtnDidClicked) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.loadBtn];
     
     self.showBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     self.showBtn.frame = CGRectMake(20, CGRectGetMaxY(self.loadBtn.frame)+20, 120, 30);
@@ -52,42 +40,50 @@
     self.logLabel.font = [UIFont systemFontOfSize:15];
     [self.view addSubview:self.logLabel];
     
-    // Create InterstitialView
-    self.interstitial = [[ADTInterstitial alloc] initWithPlacementID:@"121"];
-    self.interstitial.delegate = self;
-
-}
-
--(void)loadBtnDidClicked
-{
-    // LoadInterstitial
-    [self.interstitial load];
+    // Setting Interstitial Delegate
+    [[AdTimingInterstitialAd sharedInstance] addDelegate:self];
+    
 }
 
 -(void)showBtnDidClicked
 {
     // ShowInterstitial
-    [self.interstitial showWithRootViewController:self];
+    if ([[AdTimingInterstitialAd sharedInstance] isReady]) {
+        [[AdTimingInterstitialAd sharedInstance] showWithViewController:self scene:@"YOUR_SCENE_NAME"];
+    }
 }
 
-#pragma mark -- ADTInterstitialDelegate
-- (void)ADTInterstitialDidLoad:(ADTInterstitial *)interstitial {
-    NSLog(@"interstitialAdDidLoad");
-    self.logLabel.text = @"load success";
+/// Invoked when interstitial video is available.
+/// You can then show the video by calling show method.
+- (void)adtimingInterstitialChangedAvailability:(BOOL)available{
+    if(available){
+        NSLog(@"InterstitialAd Did Load");
+    }
 }
-- (void)ADTInterstitial:(ADTInterstitial *)interstitial didFailWithError:(NSError *)error {
-    NSLog(@"interstitialAd didFail");
-    self.logLabel.text = @"load fail";
+
+/// Sent immediately when a interstitial video starts to play.
+- (void)adtimingInterstitialDidShow:(AdTimingScene *)scene{
+    NSLog(@"InterstitialAd Start Play");
 }
-- (void)ADTInterstitialDidClick:(ADTInterstitial *)interstitial {
-    NSLog(@"interstitialAdDidClick");
+
+/// Sent immediately when a interstitial video is opened.
+- (void)adtimingInterstitialDidOpen:(AdTimingScene *)scene{
+    NSLog(@"InterstitialAd Start Play");
 }
-- (void)ADTInterstitialWillExposure:(ADTInterstitial *)interstitial {
-    NSLog(@"interstitialAdWillExposure");
-    self.logLabel.text = @"";
+
+/// Sent after a interstitial video has been clicked.
+- (void)adtimingInterstitialDidClick:(AdTimingScene *)scene{
+    NSLog(@"InterstitialAd Did Click");
 }
-- (void)ADTInterstitialDidClose:(ADTInterstitial *)interstitial {
-    NSLog(@"interstitialAdDidClose");
+
+/// Sent after a interstitial video has been closed.
+- (void)adtimingInterstitialDidClose:(AdTimingScene *)scene{
+    NSLog(@"InterstitialAd Did Close");
+}
+
+/// Sent after a interstitial video has failed to play.
+- (void)adtimingInterstitialDidFailToShow:(AdTimingScene *)scene withError:(NSError *)error{
+    NSLog(@"InterstitialAd failed to play");
 }
 
 @end

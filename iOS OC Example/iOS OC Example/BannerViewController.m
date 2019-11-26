@@ -7,14 +7,14 @@
 //
 
 #import "BannerViewController.h"
-#import <AdTiming/AdTiming.h>
+#import <AdTimingSDK/AdTimingSDK.h>
 
-@interface BannerViewController () <ADTBannerDelegate>
+@interface BannerViewController () <AdTimingBannerDelegate>
 
 @property(nonatomic,strong)UIButton *loadBtn;
 @property(nonatomic,strong)UILabel *logLabel;
 
-@property (nonatomic, strong) ADTBanner *banner;
+@property (nonatomic, strong) AdTimingBanner *banner;
 
 @end
 
@@ -43,16 +43,18 @@
 }
 
 #pragma mark -- Create BannerView
-- (ADTBanner*)banner{
+
+- (AdTimingBanner*)banner{
     if(!_banner){
-        _banner = [[ADTBanner alloc] initWithBannerType:ADTBannerTypeSmart placementID:@"111"];
-        [_banner addLayoutAttribute:ADTBannerLayoutAttributeHorizontally constant:0];
-        [_banner addLayoutAttribute:ADTBannerLayoutAttributeVertically constant:0];
+        _banner = [[AdTimingBanner alloc] initWithBannerType:AdTimingBannerTypeDefault placementID:@"111"];
+        [_banner addLayoutAttribute:AdTimingBannerLayoutAttributeHorizontally constant:0];
+        [_banner addLayoutAttribute:AdTimingBannerLayoutAttributeVertically constant:0];
         _banner.delegate = self;
         [self.view addSubview:_banner];
     }
     return _banner;
 }
+
 
 -(void)loadBtnDidClicked
 {
@@ -60,22 +62,26 @@
     [self.banner loadAndShow];
 }
 
-#pragma mark -- ADTBannerDelegate
-- (void)ADTBannerDidLoad:(ADTBanner *)banner {
-    NSLog(@"bannerAdDidLoad");
+/// Invoked when the banner ad is available.
+- (void)adtimingBannerDidLoad:(AdTimingBanner *)banner {
+    NSLog(@"BannerAd Did Load");
     self.logLabel.text = @"load success";
 }
-- (void)ADTBanner:(ADTBanner *)banner didFailWithError:(NSError *)error {
-    NSLog(@"bannerAd didFail");
-    self.logLabel.text = @"load fail";
-}
-- (void)ADTBannerWillExposure:(ADTBanner *)banner {
-    NSLog(@"bannerAdWillExposure");
-    self.logLabel.text = @"";
-}
-- (void)ADTBannerDidClick:(ADTBanner *)banner {
-    NSLog(@"bannerAdDidClick");
+
+/// Invoked when the call to load a banner has failed.
+/// Parameter error contains the reason for the failure.
+- (void)adtimingBanner:(AdTimingBanner *)banner didFailWithError:(NSError *)error {
+    NSLog(@"BannerAd Did Fail");
 }
 
+/// Invoked when the banner ad is showing.
+- (void)adtimingBannerWillExposure:(AdTimingBanner *)banner {
+    NSLog(@"BannerAd Will Exposure");
+}
+
+/// Invoked when the user clicks on the banner ad.
+- (void)adtimingBannerDidClick:(AdTimingBanner *)banner {
+    NSLog(@"BannerAd Did Click");
+}
 
 @end

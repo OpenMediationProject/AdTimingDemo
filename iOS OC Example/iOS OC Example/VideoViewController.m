@@ -7,9 +7,9 @@
 //
 
 #import "VideoViewController.h"
-#import <AdTiming/AdTiming.h>
+#import <AdTimingSDK/AdTimingSDK.h>
 
-@interface VideoViewController ()<ADTVideoAdDelegate>
+@interface VideoViewController ()<AdTimingRewardedVideoDelegate>
 
 @property(nonatomic,strong)UIButton *loadBtn;
 @property(nonatomic,strong)UIButton *showBtn;
@@ -24,16 +24,6 @@
     
     self.title = @"Video";
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    self.loadBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    self.loadBtn.frame = CGRectMake(20, 120, 120, 30);
-    [self.loadBtn setTitle:@"Load" forState:UIControlStateNormal];
-    self.loadBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    self.loadBtn.backgroundColor = [UIColor whiteColor];
-    self.loadBtn.titleLabel.font = [UIFont boldSystemFontOfSize:18];
-    self.loadBtn.layer.cornerRadius = 5;
-    [self.loadBtn addTarget:self action:@selector(loadBtnDidClicked) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.loadBtn];
     
     self.showBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     self.showBtn.frame = CGRectMake(20, CGRectGetMaxY(self.loadBtn.frame)+20, 120, 30);
@@ -51,46 +41,59 @@
     [self.view addSubview:self.logLabel];
     
     // Setting Video Delegate
-    [ADTVideoAd sharedInstance].delegate = self;
+    [[AdTimingRewardedVideoAd sharedInstance] addDelegate:self];
 }
 
--(void)loadBtnDidClicked
-{
-    // LoadVideo
-    [[ADTVideoAd sharedInstance]loadWithPlacmentID:@"5508"];
-}
 
 -(void)showBtnDidClicked
 {
-    // isAdReady
-    [[ADTVideoAd sharedInstance] isReady:@"5508"];
-    
     // ShowVideo
-    [[ADTVideoAd sharedInstance]show:@"5508"];
+    if ([[AdTimingRewardedVideoAd sharedInstance] isReady]) {
+        [[AdTimingRewardedVideoAd sharedInstance] showWithViewController:self scene:@"YOUR_SCENE_NAME"];
+    }
 }
 
-#pragma mark -- ADTVideoAdDelegate
-- (void)ADTVideoAdDidload:(NSString*)placementID{
-    NSLog(@"videoAdDidLoad");
-    self.logLabel.text = @"load success";
+/// Invoked when rewarded video is available.
+/// You can then show the video by calling the show method.
+- (void)adtmingRewardedVideoChangedAvailability:(BOOL)available{
+     if(available){
+        NSLog(@"VideoAd is Available");
+     }
 }
-- (void)ADTVideoAdDidFailToLoad:(NSString*)placementID error:(NSError*)error{
-    NSLog(@"videoAd didFail");
-    self.logLabel.text = @"load fail";
+
+/// Sent immediately when a rewarded video is opened.
+- (void)adtimingRewardedVideoDidOpen:(AdTimingScene *)scene{
+     NSLog(@"VideoAd Start Play");
 }
-- (void)ADTVideoAdDidStart:(NSString*)placementID{
-    NSLog(@"VideoAdStartPlay");
-    self.logLabel.text = @"";
+
+/// Sent immediately when a rewarded video starts to play.
+- (void)adtimingRewardedVideoPlayStart:(AdTimingScene *)scene{
+     NSLog(@"VideoAd Start Play");
 }
-- (void)ADTVideoAdDidClick:(NSString*)placementID{
-    NSLog(@"videoAdDidClick");
+
+/// Sent after a rewarded video has been clicked.
+- (void)adtimingRewardedVideoDidClick:(AdTimingScene *)scene{
+     NSLog(@"VideoAd Did Click");
 }
-- (void)ADTVideoAdDidClose:(NSString*)placementID finishState:(ADTVideoAdFinishState)state{
-    if(state == ADTVideoAdFinishStateSkipped){
-        NSLog(@"VideoAdFinishPlay(skip)");
-    } else if (state == ADTVideoAdFinishStateCompleted){
-        NSLog(@"VideoAdFinishPlay(complete)");
-    }
+
+/// Send after a rewarded video has been completed.
+- (void)adtimingRewardedVideoPlayEnd:(AdTimingScene *)scene{
+     NSLog(@"VideoAd Play End");
+}
+
+/// Sent after a rewarded video has been closed.
+- (void)timingRewardedVideoDidClose:(AdTimingScene *)scene{
+     NSLog(@"VideoAd Did Close");
+}
+
+/// Sent after a user has been granted a reward.
+- (void)adtimingRewardedVideoDidReceiveReward:(AdTimingScene *)scene{
+     NSLog(@"Receive a reward");
+}
+
+/// Sent after a rewarded video has failed to play.
+- (void)adtimingRewardedVideoDidFailToShow:(AdTimingScene *)scene withError:(NSError *)error{
+     NSLog(@"VideoAd failed to play");
 }
 
 @end

@@ -7,13 +7,13 @@
 //
 
 #import "NativeViewController.h"
-#import <AdTiming/AdTiming.h>
+#import <AdTimingSDK/AdTimingSDK.h>
 
-@interface NativeViewController ()<ADTNativeDelegate>
+@interface NativeViewController ()<AdTimingNativeDelegate>
 
-@property (nonatomic, strong) ADTNative *native;
-@property (nonatomic, strong) ADTNativeAd *nativeAd;
-@property (nonatomic, strong) ADTNativeView *nativeView;
+@property (nonatomic, strong) AdTimingNative *native;
+@property (nonatomic, strong) AdTimingNativeAd *nativeAd;
+@property (nonatomic, strong) AdTimingNativeView *nativeView;
 @property (nonatomic, strong) UIImageView *iconView;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *bodyLabel;
@@ -31,7 +31,7 @@
     
     self.title = @"Native";
     self.view.backgroundColor = [UIColor whiteColor];
-
+    
     self.loadBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     self.loadBtn.frame = CGRectMake(20, 120, 120, 30);
     [self.loadBtn setTitle:@"Load" forState:UIControlStateNormal];
@@ -58,18 +58,16 @@
     [self.view addSubview:self.logLabel];
     
     // Create ADTNative
-    self.native = [[ADTNative alloc]initWithPlacmentID:@"109"];
+    self.native = [[AdTimingNative alloc]initWithPlacementID:@"109"];
     self.native.delegate = self;
-    self.native.adType = ADTNativeAdTypeLarge;
     [self.view addSubview:self.nativeView];
     
 }
 
-#pragma maek -- Create ADTNativeView
-- (ADTNativeView*)nativeView{
+- (AdTimingNativeView*)nativeView{
     if(!_nativeView){
-        _nativeView = [[ADTNativeView alloc]initWithFrame:CGRectMake(0,300, self.view.frame.size.width, 300)];
-        _nativeView.mediaView = [[ADTNativeMediaView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 300)];
+        _nativeView = [[AdTimingNativeView alloc]initWithFrame:CGRectMake(0,300, self.view.frame.size.width, 300)];
+        _nativeView.mediaView = [[AdTimingNativeMediaView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 300)];
         [_nativeView addSubview:_nativeView.mediaView];
         _iconView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
         [_nativeView addSubview:_iconView];
@@ -82,6 +80,7 @@
     }
     return _nativeView;
 }
+
 
 -(void)loadBtnDidClicked
 {
@@ -99,22 +98,29 @@
     _bodyLabel.text = self.nativeAd.body;
 }
 
-#pragma mark -- ADTNativeDelegate
-- (void)ADTNative:(ADTNative*)native didLoad:(ADTNativeAd*)nativeAd{
-    NSLog(@"nativeAdDidLoad");
+/// Invoked when the ad is available.
+/// You can then show the ad.
+- (void)adtimingNative:(AdTimingNative*)native didLoad:(AdTimingNativeAd*)nativeAd{
+    NSLog(@"NativeAd Did Load");
     self.nativeAd = nativeAd;
     self.logLabel.text = @"load success";
 }
-- (void)ADTNative:(ADTNative*)native didFailWithError:(NSError*)error{
-    NSLog(@"nativeAd didFail");
-    self.logLabel.text = @"load fail";
+
+/// Invoked when the call to load an ad has failed.
+/// Parameter error contains the reason for the failure.
+- (void)adtimingNative:(AdTimingNative*)native didFailWithError:(NSError*)error{
+    NSLog(@"NativeAd Did Fail");
 }
-- (void)ADTNativeWillExposure:(ADTNative*)native{
-    NSLog(@"nativeAdWillExposure");
-    self.logLabel.text = @"";
+
+/// Invoked when the Ad begins to show.
+- (void)adtimingNativeWillExposure:(AdTimingNative*)native{
+    NSLog(@"NativeAd Will Exposure");
 }
-- (void)ADTNativeDidClick:(ADTNative*)native{
-    NSLog(@"nativeAdDidClick");
+
+/// Invoked when the ad finishes playing.
+- (void)adtimingNativeDidClick:(AdTimingNative*)native{
+    NSLog(@"NativeAd Did Click");
 }
+
 
 @end

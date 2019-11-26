@@ -7,11 +7,10 @@
 //
 
 #import "InteractiveViewController.h"
-#import <AdTiming/AdTiming.h>
+#import <AdTimingSDK/AdTimingSDK.h>
 
-@interface InteractiveViewController ()<ADTInteractiveDelegate>
+@interface InteractiveViewController ()<AdTimingInteractiveAdDelegate>
 
-@property(nonatomic, strong)ADTInteractive *interactive;
 
 @property(nonatomic,strong)UIButton *loadBtn;
 @property(nonatomic,strong)UIButton *showBtn;
@@ -23,19 +22,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.title = @"Interactive";
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    self.loadBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    self.loadBtn.frame = CGRectMake(20, 120, 120, 30);
-    [self.loadBtn setTitle:@"Load" forState:UIControlStateNormal];
-    self.loadBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    self.loadBtn.backgroundColor = [UIColor whiteColor];
-    self.loadBtn.titleLabel.font = [UIFont boldSystemFontOfSize:18];
-    self.loadBtn.layer.cornerRadius = 5;
-    [self.loadBtn addTarget:self action:@selector(loadBtnDidClicked) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.loadBtn];
     
     self.showBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     self.showBtn.frame = CGRectMake(20, CGRectGetMaxY(self.loadBtn.frame)+20, 120, 30);
@@ -52,39 +41,48 @@
     self.logLabel.font = [UIFont systemFontOfSize:15];
     [self.view addSubview:self.logLabel];
     
-    // Create Interactive
-    _interactive = [[ADTInteractive alloc] initWithPlacementID:@"5051"];
-    _interactive.delegate = self;
-
+    // Setting Interactive Delegate
+    [[AdTimingInteractiveAd sharedInstance] addDelegate:self];
 }
 
--(void)loadBtnDidClicked
-{
-    // LoadInteractive
-    [_interactive load];
-}
 
 -(void)showBtnDidClicked
 {
     // ShowInteractive
-    [_interactive show];
+    if ([[AdTimingInteractiveAd sharedInstance] isReady]) {
+        [[AdTimingInteractiveAd sharedInstance] showWithViewController:self scene:@"YOUR_SCENE_NAME"];
+    }}
+
+/// Invoked when Interactive Ad is available.
+/// You can then show the video by calling the show method.
+- (void)adtimingInteractiveChangedAvailability:(BOOL)available {
+    if(available){
+        NSLog(@"InteractiveAd is Available");
+    }
 }
 
-#pragma mark -- ADTInteractiveDelegate
-- (void)ADTInteractiveDidLoad:(ADTInteractive*)interactive {
-    NSLog(@"interactiveAdDidLoad");
-    self.logLabel.text = @"load success";
-}
-- (void)ADTInteractive:(ADTInteractive*)interactive didFailWithError:(NSError*)error {
-    NSLog(@"interactiveAd didFail");
-    self.logLabel.text = @"load fail";
-}
-- (void)ADTInteractiveWillWillExposure:(ADTInteractive*)interactive {
-    NSLog(@"interactiveAdWillExposure");
-    self.logLabel.text = @"";
-}
-- (void)ADTInteractiveDidClose:(ADTInteractive*)interactive {
-    NSLog(@"interactiveAdDidClose");
+/// Sent immediately when a interactive ad is opened.
+- (void)adtimingInteractiveDidOpen:(AdTimingScene *)scene{
+    NSLog(@"InteractiveAd Start Play");
 }
 
+/// Sent immediately when a interactive ad starts to play.
+- (void)adtimingInteractiveDidShow:(AdTimingScene *)scene{
+    NSLog(@"InteractiveAd Start Play");
+}
+
+/// Sent after a interstitial ad has been clicked.
+- (void)adtimingInteractiveDidClick:(AdTimingScene *)scene{
+    NSLog(@"InteractiveAd Did Click");
+}
+
+/// Sent after a interactive ad has been closed.
+- (void)adtimingInteractiveDidClose:(AdTimingScene *)scene{
+    NSLog(@"InteractiveAd Did Close");
+}
+
+/// Sent after a interactive ad has failed to play.
+- (void)adtimingInteractiveDidFailToShow:(AdTimingScene *)scene withError:(NSError *)error{
+    NSLog(@"InteractiveAd failed to play");
+}
 @end
