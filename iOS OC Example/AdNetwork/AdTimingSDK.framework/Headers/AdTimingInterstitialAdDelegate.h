@@ -15,22 +15,22 @@ NS_ASSUME_NONNULL_BEGIN
 
 @optional
 
-/// Invoked whether a interstitial video is available.
+/// Invoked when a interstitial video is available.
 - (void)adtimingInterstitialChangedAvailability:(BOOL)available;
 
-/// Sent immediately when a interstitial video has been opened.
+/// Sent immediately when a interstitial video is opened.
 - (void)adtimingInterstitialDidOpen:(AdTimingScene*)scene;
 
-/// Sent immediately when a interstitial video has been shown.
+/// Sent immediately when a interstitial video starts to play.
 - (void)adtimingInterstitialDidShow:(AdTimingScene*)scene;
 
-/// Sent after when a interstitial video has been clicked.
+/// Sent after a interstitial video has been clicked.
 - (void)adtimingInterstitialDidClick:(AdTimingScene*)scene;
 
-/// Sent after when a interstitial video has been closed.
+/// Sent after a interstitial video has been closed.
 - (void)adtimingInterstitialDidClose:(AdTimingScene*)scene;
 
-/// Sent after when a interstitial video failed to play.
+/// Sent after a interstitial video has failed to play.
 - (void)adtimingInterstitialDidFailToShow:(AdTimingScene*)scene withError:(NSError *)error;
 
 @end

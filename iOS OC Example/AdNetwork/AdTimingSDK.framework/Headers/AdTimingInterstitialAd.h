@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Presents the interstitial video ad modally from the specified view controller.
 /// Parameter viewController: The view controller that will be used to present the video ad.
-/// Parameter sceneName: The name of th ad scene.
+/// Parameter sceneName: The name of th ad scene. Default scene if null.
 - (void)showWithViewController:(UIViewController *)viewController scene:(NSString *)sceneName;
 
 @end

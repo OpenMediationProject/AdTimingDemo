@@ -37,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Presents the rewarded video ad modally from the specified view controller.
 /// Parameter viewController: The view controller that will be used to present the video ad.
-/// Parameter sceneName: The name of th ad scene.
+/// Parameter sceneName: The name of th ad scene. Default scene if null.
 /// Parameter extraParams: Exciting video Id.
 - (void)showWithViewController:(UIViewController *)viewController scene:(NSString *)sceneName extraParams:(NSString*)extraParams;
 
