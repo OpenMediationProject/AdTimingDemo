@@ -1,0 +1,3 @@
+[submodule "om-android"]
+	path = om-android
+	url = https://github.com/mopub/mopub-android-sdk.git
